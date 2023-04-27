@@ -64,11 +64,66 @@ const port = args.port || args.p || process.env.PORT || 8080
 // Load app middleware here to serve routes, accept data requests, etc.
 //
 
+//This connects our api to the HTML
 app.use(express.static('public'));
-
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
 });
+
+//IMPORT LIB for rock paper scissor here (OR) or copy and paste rock paper script here 
+
+import { rpsPlay } from './public/rpsls.js';
+import { rpslsPlay } from './public/rpsls.js';
+
+//LOAD UP API ROUTES BELOW
+
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+
+
+app.get("/app/", (req, res) => {
+    res.status(200).send('200 OK');
+})
+
+app.get("/app/rps/", (req, res) => {
+    res.status(200).send(JSON.stringify(rpsPlay()));
+})
+
+app.get("/app/rpsls/", (req, res) => {
+    res.status(200).send(JSON.stringify(rpslsPlay()));
+})
+
+//queries
+app.get("/app/rps/play/", (req, res) => {
+    res.status(200).send(JSON.stringify(rpsPlay(req.query.shot)));
+})
+
+app.get("/app/rpsls/play/", (req, res) => {
+    res.status(200).send(JSON.stringify(rpslsPlay(req.query.shot)));
+})
+
+// accept JSON request bodies
+app.post("/app/rps/play/", (req, res) => {
+    res.status(200).send(JSON.stringify(rpsPlay(req.body.shot)));
+})
+
+app.post("/app/rpsls/play/", (req, res) => {
+    res.status(200).send(JSON.stringify(rpslsPlay(req.body.shot)));
+})
+
+//url (parameter) endpoint
+app.get("/app/rps/play/:shot", (req, res) => {
+    res.status(200).send(JSON.stringify(rpsPlay(req.params.shot)));
+})
+
+app.get("/app/rpsls/play/:shot", (req, res) => {
+    res.status(200).send(JSON.stringify(rpslsPlay(req.params.shot)));
+})
+
+app.get("*", (req, res) => {
+    res.status(404).send("404 NOT FOUND");
+})
+
 
 // Create and update access log
 // The morgan format below is the Apache Foundation combined format but with ISO8601 dates
