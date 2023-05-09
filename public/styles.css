@@ -1,13 +1,80 @@
+/* Reset margins and paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: rgb(106, 192, 242);
+}
+
+/* Set the font family for the entire document */
 body {
-    background-color: lightblue
-  }
-  
-  h1 {
-    color: #333;
-    font-size: 36px;
-  }
-  
-  p {
-    color: black;
-    font-size: 24px;
-  }
+  font-family: 'Courier New', Courier, monospace
+}
+
+/* Center the content and apply a max-width */
+.container {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 2rem;
+}
+
+/* Add some spacing and center align the text for headings */
+h1 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Style the form elements */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Add spacing between form elements */
+form input[type="radio"],
+form label,
+form button {
+  margin-bottom: 0.5rem;
+}
+
+/* Style the submit and refresh buttons */
+button {
+  background-color: #3a3d3f;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease;
+  align-items: center;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Add some spacing between the submit and refresh buttons */
+#refreshButton {
+  margin-top: 1rem;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.show {
+  visibility: visible;
+}
+
+.div {
+  margin-bottom: 1rem;
+  align-items: center;
+  align-self: center; 
+  align-content: center;
+  text-align: center;
+  vertical-align: center;
+  padding: 2rem; 
+}
+
